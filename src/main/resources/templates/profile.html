@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+<head th:replace="layouts::header"></head>
+<body>
+<section th:replace="layouts::navigation_bar"></section>
+<section class="menu_indicator">
+    <div class="container">
+        <ul class="menu_indicator__nav">
+            <li class="menu_indicator__link"><a href="home.html" th:href="@{/home}">Home</a></li>
+            <li class="menu_indicator__link">/</li>
+            <li class="menu_indicator__link"><a href="profile.html" th:href="@{/profile}">Profile</a></li>
+        </ul>
+    </div>
+</section>
+<section class="profile">
+    <div class="container">
+        <div class="profile__wrapper">
+            <div class="profile__wrapper-head"><h2 class="profile__title">User profile</h2></div>
+            <form class="profile__form" th:action="@{/profile/update}" th:object="${userProfileDTO}" action="#"
+                  method="post">
+                <div class="profile__logged_user">
+                    <h4>Logged user: </h4>
+                        <p name="email" type="email" placeholder="Email" th:label="email" th:text="${user.email}">
+                    <div id="success" th:if="${param.success}">Profile has been updated
+                    </div>
+                </div>
+                <div class="profile__form_field">
+                    <div class="profile__form_field_head-error">
+                        <p>Name </p>
+                        <p class="error"
+                           th:errors="*{firstName}"></p>
+                    </div>
+                    <input type="text" class="profile__input" placeholder="Name" name="firstName" th:label="firstName"
+                           th:value="${user.firstName}">
+                </div>
+                <div class="profile__form_field">
+                    <div class="profile__form_field_head-error">
+                        <p>Surname </p>
+                        <p class="error"
+                           th:errors="*{lastName}"></p>
+                    </div>
+                    <input type="text" class="profile__input" placeholder="Surname" name="lastName" th:label="lastName"
+                           th:value="${user .lastName}">
+                </div>
+                <div class="profile__form_field">
+                    <div class="profile__form_field_head-error">
+                        <p>Password </p>
+                        <p class="error" th:if="${#fields.hasAnyErrors()}"
+                           th:errors="*{password}" th:errorclass="error"></p>
+                    </div>
+                    <input type="password" class="profile__input" placeholder="Password" name="password"
+                           th:label="password" value="123">
+                </div>
+                <div class="profile__form_field">
+                    <div class="profile__form_field_head-error">
+                        <p>Confirm password</p>
+                        <p class="error" th:if="${#fields.hasAnyErrors()}"
+                           th:errors="*{confirmPassword}"
+                           th:errorclass="error">></p>
+                    </div>
+                    <input type="password" class="profile__input" placeholder="Confirm Password" name="confirmPassword"
+                           value="123">
+                </div>
+                <button type="submit">Update User</button>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+</html>

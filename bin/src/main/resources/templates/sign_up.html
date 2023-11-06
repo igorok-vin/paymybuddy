@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign In</title>
+    <meta name="title" content="Pay My Buddy">
+    <meta name="description"
+          content="App that allows clients to transfer money in order to manage their finances or pay friends.">
+    <!-- Favicon  -->
+    <link rel="apple-touch-icon" sizes="57x57" href="icons/favicon//apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="icons/favicon//apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icons/favicon//apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="icons/favicon//apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="icons/favicon//apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="icons/favicon//apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icons/favicon//apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/favicon//apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/favicon//apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/favicon//android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon//favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon//favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon//favicon-16x16.png">
+    <link rel="manifest" href="icons/favicon//manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="icons/favicon//ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<section class="sign_up">
+    <div class="container">
+        <div class="sign_up__wrapper">
+            <form class="sign_up__form" th:action="@{/sign_up}" th:object="${userProfileDTO}" method="post" role="form">
+                <div class="sign_up__button">
+                    <div class="sign_up__button-container">Pay My Buddy</div>
+                </div>
+
+                <!--<p id="low" class="text-danger" th:errors="*{global}"> </p>-->
+                <div class="profile__form_field">
+                    <div class="profile__form_field_head-error">
+                        <p>Name </p>
+                        <p class="error" th:if="${#fields.hasAnyErrors()}"
+                           th:errors="*{firstName}"></p>
+                    </div>
+                    <input type="text" class="profile__input" name="firstName"  th:field="*{firstName}">
+                </div>
+                <div class="profile__form_field">
+                    <div class="profile__form_field_head-error">
+                        <p>Surname </p>
+                        <p class="error" th:if="${#fields.hasAnyErrors()}"
+                           th:errors="*{lastName}"></p>
+                    </div>
+                    <input type="text" class="profile__input" name="firstName" th:field="*{lastName}">
+                </div>
+                <div class="profile__form_field">
+                    <div class="profile__form_field_head-error">
+                        <p>Email </p>
+                        <p class="error"  th:if="${#fields.hasAnyErrors()}"
+                           th:errors="*{email}" ></p>
+                        <div th:errors="*{global}" style="color:red"></div>
+                    </div>
+                    <input type="email" class="profile__input" name="firstName" th:field="*{email}">
+                </div>
+                <div class="profile__form_field">
+                    <div class="profile__form_field_head-error">
+                        <p>Password </p>
+                        <p class="error" th:if="${#fields.hasAnyErrors()}"
+                           th:errors="*{password}"></p>
+                    </div>
+                    <input type="password" class="profile__input" th:field="*{password}">
+                </div>
+
+
+               <!-- <input required type="text" class="sign_up__input" placeholder="Name" th:field="*{firstName}">
+                <input required type="text" class="sign_up__input" placeholder="Surname" th:field="*{lastName}">
+                <input required type="email" class="sign_up__input" placeholder="Email" th:field="*{email}">
+                <input required type="password" class="sign_up__input" placeholder="Password" th:field="*{password}">-->
+                <button type="submit">Sign In</button>
+                <p>Already have an account? Let's log in then. <a href="login.html" th:href="@{/login.html}">Log in here</a></p>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+
+</html>

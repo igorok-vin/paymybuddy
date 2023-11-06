@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+
+<head th:replace="layouts::header"></head>
+
+<body>
+<section th:replace="layouts::navigation_bar"></section>
+<section class="menu_indicator">
+    <div class="container">
+        <ul class="menu_indicator__nav">
+            <li class="menu_indicator__link"><a href="home.html" th:href="@{/home}">Home</a></li>
+            <li class="menu_indicator__link">/</li>
+            <li class="menu_indicator__link"><a href="balance.html" th:href="@{/balance}">My Balance</a></li>
+        </ul>
+    </div>
+</section>
+<section class="balance">
+    <div class="container">
+        <div class="balance__wrapper">
+            <div class="balance__wrapper-head">
+                <h2 class="balance__title">My Balance</h2>
+            </div>
+            <form class="balance__form" action="#" th:action="@{/balance/save}" th:object="${balanceDTO}"
+                  th:method="post">
+                <table class="balance__table" border="1">
+                    <thead>
+                    <tr>
+                        <th class="balance__head-table">Current Balance</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="user:${user}">
+                        <td th:text="${user.balance}+ ' $'">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <input type="number" class="send_money__input_number" placeholder="0€" step="0.01" min="0" max="1000000"
+                       th:field="*{refillAmount}">
+                <button type="submit">Add Money</button>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+
+</html>

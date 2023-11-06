@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>2d515d2d-28ab-485a-afde-1af14987f729.SCHEMA:dbpaymybuddy</OriginalElement>
+  <nodes>
+    <node x="220.0" y="234.0">2d515d2d-28ab-485a-afde-1af14987f729.TABLE:dbpaymybuddy.user_contact</node>
+    <node x="0.0" y="0.0">2d515d2d-28ab-485a-afde-1af14987f729.TABLE:dbpaymybuddy.transaction</node>
+    <node x="0.0" y="380.0">2d515d2d-28ab-485a-afde-1af14987f729.TABLE:dbpaymybuddy.contact</node>
+    <node x="213.0" y="0.0">2d515d2d-28ab-485a-afde-1af14987f729.TABLE:dbpaymybuddy.user</node>
+    <node x="0.0" y="234.0">2d515d2d-28ab-485a-afde-1af14987f729.TABLE:dbpaymybuddy.refill_balance</node>
+  </nodes>
+  <notes />
+  <edges />
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="192.0" y="229.0" />
+  <SelectedNodes>
+    <node>2d515d2d-28ab-485a-afde-1af14987f729.TABLE:dbpaymybuddy.contact</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

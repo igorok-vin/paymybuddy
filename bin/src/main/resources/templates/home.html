@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head th:replace="layouts::header"></head>
+
+<body>
+
+<section th:replace="layouts::navigation_bar"></section>
+<section class="menu_indicator">
+    <div class="container">
+        <ul class="menu_indicator__nav">
+            <li class="menu_indicator__link"><a href="home.html" th:href="@{/home}">Home</a></li>
+        </ul>
+    </div>
+</section>
+<section class="home">
+    <div class="container">
+        <div class="title">What you would like to do today?</div>
+        <div class="devider"></div>
+        <div class="home__items">
+            <div class="home__item  animate__animated animate__pulse animate__delay-1s">
+                <a href="transaction.html" th:href="@{/transaction}" >
+                  <div class="home__item-img"><img src="icons/home/transaction.png" alt="transaction"></div>
+                  <h3 class="title">Transaction</h3>
+                </a>
+            </div>
+            <div class="home__item  animate__animated animate__pulse animate__delay-1s">
+                <a href="profile.html" th:href="@{/profile}">
+                  <div class="home__item-img"><img src="icons/home/profile.png" alt="profile"></div>
+                  <h3 class="title">Profile</h3>
+                </a>
+            </div>
+            <div class="home__item  animate__animated animate__pulse animate__delay-1s">
+                <a href="contacts.html" th:href="@{/contacts}">
+                  <div class="home__item-img"><img src="icons/home/contact.png" alt="contact"></div>
+                  <h3 class="title">Contact</h3>
+                </a>
+            </div>
+            <div class="home__item  animate__animated animate__pulse animate__delay-1s">
+                <a href="balance.html" th:href="@{/balance}">
+                  <div class="home__item-img"><img src="icons/home/wallet.png" alt="wallet"></div>
+                  <h3 class="title">My balance</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign In</title>
+    <meta name="title" content="Pay My Buddy">
+    <meta name="description"
+          content="App that allows clients to transfer money in order to manage their finances or pay friends.">
+    <!-- Favicon  -->
+    <link rel="apple-touch-icon" sizes="57x57" href="icons/favicon//apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="icons/favicon//apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="icons/favicon//apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="icons/favicon//apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="icons/favicon//apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="icons/favicon//apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="icons/favicon//apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="icons/favicon//apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/favicon//apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/favicon//android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon//favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="icons/favicon//favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon//favicon-16x16.png">
+    <link rel="manifest" href="icons/favicon//manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="icons/favicon//ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="css/style.css" th:href="@{/css/style.css}">
+</head>
+<body>
+<section class="login">
+    <div class="container">
+        <div class="login__wrapper">
+            <form class="login__form" th:action="@{/login}" method="post">
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger" style="color:red;text-align:center; font-size:20px">Invalid username or
+                        password.
+                    </div>
+                </div>
+                <div th:if="${param.logout}">
+                    <div class="alert alert-info" style="color:blue;text-align:center; font-size:20px">You have been logged out.</div>
+                </div>
+                <div id="success" th:if="${param.success}" style="color:#29a582;font-size:18px;margin:0 auto;">Account
+                    has been created
+                </div>
+                <div class="login__button">
+                    <div class="login__button-container">Pay My Buddy</div>
+                </div>
+                <input required type="email" class="profile__input" name="username" placeholder="Email">
+                <input required type="password" class="profile__input" name="password" placeholder="Password">
+                <div class="login__checkbox">
+                    <input type="checkbox" class="profile__input" id="remember" name="remember-me">
+                    <label class="custom-control-label mb-4" for="remember" name="remember-me">Remember me</label>
+                </div>
+                <button type="submit">Login</button>
+                <p>Don't have account? <a href="sign_up.html" th:href="@{/sign_up}">Sign Up here</a></p>
+            </form>
+        </div>
+    </div>
+</section>
+</body>
+
+</html>

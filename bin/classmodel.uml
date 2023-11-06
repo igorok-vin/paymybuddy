@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.example.paymybuddy.model</OriginalElement>
+  <nodes>
+    <node x="29.41176470588232" y="372.5882352941177">com.example.paymybuddy.model.Transaction</node>
+    <node x="353.705882352941" y="106.41176470588255">com.example.paymybuddy.model.RefillBalance</node>
+    <node x="-32.94117647058823" y="-9.411764705882348">com.example.paymybuddy.model.User</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.example.paymybuddy.model.RefillBalance" target="com.example.paymybuddy.model.User" relationship="DEPENDENCY">
+      <point x="-110.0" y="-27.323529411764895" />
+      <point x="153.0" y="0.0" />
+    </edge>
+    <edge source="com.example.paymybuddy.model.RefillBalance" target="com.example.paymybuddy.model.User" relationship="TO_ONE">
+      <point x="-110.0" y="0.0" />
+      <point x="353.705882352941" y="214.47058823529397" />
+      <point x="290.88378886439955" y="214.47058823529397" />
+      <point x="290.88378886439955" y="178.91176470588255" />
+      <point x="153.0" y="27.323529411764895" />
+    </edge>
+    <edge source="com.example.paymybuddy.model.Transaction" target="com.example.paymybuddy.model.User" relationship="DEPENDENCY">
+      <point x="-113.85294117647055" y="-127.5" />
+      <point x="0.0" y="161.00000000000003" />
+    </edge>
+    <edge source="com.example.paymybuddy.model.Transaction" target="com.example.paymybuddy.model.User" relationship="TO_ONE">
+      <point x="0.0" y="-127.5" />
+      <point x="113.85294117647055" y="161.00000000000003" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.3000000000000003" showDependencies="true" x="379.5232338373964" y="293.1131221719456" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
