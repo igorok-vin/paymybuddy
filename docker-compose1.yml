@@ -1,0 +1,30 @@
+#docker swarm stack
+version: "3.9"
+services:
+  database_apps:
+    image: mysql
+    ports:
+      - 3305:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=portfolioapps2024
+      - MYSQL_DATABASE=dbpaymybuddy
+    volumes:
+      - database_appslSavedDataMySQL:/var/lib/mysql
+    deploy:
+      replicas: 1
+
+  paymybuddyapp:
+    image: igorokvin/paymybuddyapp:paymybuddyapp
+    ports:
+      - "8085:8085"
+    depends_on:
+      - database_apps
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://database_apps:3306/dbpaymybuddy?allowPublicKeyRetrieval=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: portfolioapps2024
+    deploy:
+      replicas: 1
+
+volumes:
+  database_appslSavedDataMySQL:

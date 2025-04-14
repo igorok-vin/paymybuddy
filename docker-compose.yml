@@ -1,0 +1,31 @@
+#docker compose
+version: "3.9"
+name: paymybuddyapp
+services:
+  db_paymybuddydockerapp:
+    container_name: dbpaymybuddy
+    image: mysql
+    ports:
+      - 3305:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=password2024
+      - MYSQL_DATABASE=dbpaymybuddy
+    volumes:
+      - paymybuddySavedDataMySQL:/var/lib/mysql
+    restart: always
+
+  paymybuddyapp:
+    container_name: paymybuddyapp
+    image: igorokvin/paymybuddyapp:paymybuddyapp
+    ports:
+      - "8086:8086"
+    depends_on:
+      - db_paymybuddydockerapp
+    environment:
+      SPRING_DATASOURCE_URL: 'jdbc:mysql://db_paymybuddydockerapp:3306/dbpaymybuddy?allowPublicKeyRetrieval=true&useSSL=false'
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password2024
+    restart: always
+
+volumes:
+  paymybuddySavedDataMySQL:

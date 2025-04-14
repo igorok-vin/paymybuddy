@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts::header">
+</head>
+
+<body>
+<section class="sign_up">
+    <div class="container">
+        <div class="sign_up__wrapper">
+            <form action="#" class="sign_up__form" th:action="@{/signup}" th:object="${userProfileDTO}" method="post" role="form" id="post-create-customer">
+                <div class="sign_up__button">
+                    <div class="sign_up__button-container">Pay My Buddy</div>
+                </div>
+                <div class="profile__form_field">
+                    <div class="profile__form_field_head-error">
+                        <p>Name </p>x
+                        <p class="error" th:if="${#fields.hasAnyErrors()}" th:errors="*{firstName}" th:errorclass="error"></p>
+                    </div>
+                    <input type="text" class="profile__input" name="firstName" th:field="*{firstName}">
+                </div>
+                <div class="profile__form_field">
+                    <div class="profile__form_field_head-error">
+                        <p>Surname </p>
+                        <p class="error" th:if="${#fields.hasAnyErrors()}" th:errorclass="error" th:errors="*{lastName}"></p>
+                    </div>
+                    <input type="text" class="profile__input" name="lastName" th:field="*{lastName}" >
+                </div>
+                <div class="profile__form_field">
+                    <div class="profile__form_field_head-error">
+                        <p>Email </p>
+                        <p class="error" th:if="${#fields.hasAnyErrors()}" th:errorclass="error" th:errors="*{email}" ></p>
+                    </div>
+                    <input type="email" name="email" class="profile__input form-control" th:field="*{email}">
+
+                    <!--<script th:inline="javascript"
+                            th:if="${#fields.hasErrors('global')}">$(document).ready(function () {
+                        $("#globalErrorTransaction").fadeIn("slow");
+                        $(".modal_window_warning_empty_list__close").click(function () {
+                            $(".overlay_warning_empty_list").fadeOut("slow");
+                        });
+                        $(".button_warning").click(function () {
+                            $(".overlay_warning_empty_list").fadeOut("slow");
+                        });
+                    });
+                    </script>-->
+                </div>
+                <div class="profile__form_field">
+                    <div class="profile__form_field_head-error">
+                        <p>Password</p>
+                        <p class="error" th:if="${#fields.hasAnyErrors()}" th:errorclass="error" th:errors="*{password}"></p>
+                    </div>
+                    <input type="password" class="profile__input" name="password" th:field="*{password}">
+                </div>
+                <div class="profile__form_field">
+                    <div class="profile__form_field_head-error">
+                        <p>Confirm Password</p>
+                        <p class="error" th:if="${#fields.hasAnyErrors()}" th:errorclass="error" th:errors="*{confirmPassword}"></p>
+                    </div>
+                    <input type="password" class="profile__input" name="password" th:field="*{confirmPassword}">
+                </div>
+
+                <!--onclick="checkEmailUniqueness(form)"-->
+                <button type="submit" class="sign_in_form_button">Sign Up</button>
+
+                <p>Already have an account? Let's log in then. <a th:href="@{/login}">Log in here</a></p>
+            </form>
+        </div>
+    </div>
+    <!--Warning modal dialogs-->
+    <div id="globalErrorTransaction" class="overlay_warning_empty_list">
+        <div class="modal_window_warning_empty_list">
+            <div class="modal_window_warning_empty_list__close">&times;</div>
+            <div class="modal_window_warning_empty_list__subtitle" >
+                <!--<p id="low" class="text-danger" th:errors="*{global}"></p>-->
+                <p>This email already in use</p>
+            </div>
+            <button type="button" class="button_warning button_warning_transaction">Close</button>
+        </div>
+    </div>
+</section>
+<script type="text/javascript">
+
+    let callCheckEmailUniqueness = false;
+
+   /* $(document).ready(function () {
+        $(".sign_in_form_button").on("click", function (e) {
+
+            checkEmail(email);
+
+        });
+    });*/
+
+    function checkFormValidity(){
+        var formValid = document.forms["post-create-customer"].reportValidity();
+        if (formValid==false){
+            return formValid;
+        }
+    }
+
+    function checkEmailUniqueness(form) {
+        checkFormValidity();
+        customerEmail = $("#email").val();
+        checkEmailURL = "/users/check_unique_email";
+        csrf_Value = $("input[name='_csrf']").val();
+
+        params = {email: customerEmail, _csrf: csrf_Value}
+
+        $.get(checkEmailURL, params, function (response) {
+
+            if (response == "duplicated") {
+                /*alert("Success");
+                form.setCustomValidity("There is another customer having the email " + customerEmail);*/
+                $("#globalErrorTransaction").fadeIn("slow");
+                $(".modal_window_warning_empty_list__close").click(function () {
+                    $(".overlay_warning_empty_list").fadeOut("slow");
+                });
+                $(".button_warning").click(function () {
+                    $(".overlay_warning_empty_list").fadeOut("slow");
+                });
+            } else if (response == "unique") {
+                form.submit();
+            }
+        }).fail(function () {
+            form.setCustomValidity("Could not connect to the server");
+        })
+    /*    $.ajax({
+            type: "GET",
+            url: checkEmailURL,
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader(csrf_HeaderName,csrf_Value);
+            }
+    }).done(function (response) {
+            console.log(response);
+            if (response == true) {
+                alert(response);
+                $("#globalErrorTransaction").fadeIn("slow");
+                $(".modal_window_warning_empty_list__close").click(function () {
+                    $(".overlay_warning_empty_list").fadeOut("slow");
+                });
+                $(".button_warning").click(function () {
+                    $(".overlay_warning_empty_list").fadeOut("slow");
+                });
+            } else if (response == false) {
+                $(".sign_up__form").submit();
+            }
+    }).fail(function (xhr) {
+        alert("Error");
+        });*/
+    };
+</script>
+</body>
+</html>

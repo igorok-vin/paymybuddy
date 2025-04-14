@@ -1,0 +1,16 @@
+.transactions {
+    padding-top: 30px;
+}
+.transactions__wrapper {
+    position: relative;
+    display: grid;
+    grid-template: repeat(2, minmax(30px, auto)) / 900px;
+    justify-content: center;
+}
+.transactions__table th {
+    background-color: #91de91;
+    text-align: center;
+}
+.transactions__table td {
+    text-align: center;
+}

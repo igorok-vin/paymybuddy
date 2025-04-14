@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+>
+<head th:replace="layouts::header"></head>
+<body>
+<section th:replace="layouts::navigation_bar"></section>
+<section class="menu_indicator">
+    <div class="container">
+        <ul class="menu_indicator__nav">
+            <li class="menu_indicator__link"><a href="home.html" th:href="@{/home}">Home</a></li>
+            <li class="menu_indicator__link">/</li>
+            <li class="menu_indicator__link"><a href="profile.html" th:href="@{/profile}">Profile</a></li>
+        </ul>
+    </div>
+</section>
+<section class="profile">
+    <div class="container">
+        <div class="profile__wrapper">
+            <div class="profile__wrapper-head"><h2 class="profile__title">User profile</h2></div>
+            <form class="profile__form" th:action="@{/profile/update}" th:object="${userProfileDTO}" action="#"
+                  method="post">
+                <div class="profile__logged_user">
+                    <h4>Logged user: </h4>
+
+                        <p name="email" type="email" placeholder="Email" th:label="email" th:text="${user.email}">
+
+                    <!--для виведення повідомлення про success. Вказується такий клас з id="success" s перевіркою на th:if="${param.success}. В контролері кінечний URL буде redirect:/profile?success-->
+                    <div id="success" th:if="${param.success}">Profile has been updated
+                    </div>
+                </div>
+                <div class="profile__form_field">
+                    <div class="profile__form_field_head-error">
+                        <p>Name </p>
+                        <p class="error"
+                           th:errors="*{firstName}"></p>
+                    </div>
+                    <input type="text" class="profile__input" placeholder="Name" name="firstName" th:label="firstName"
+                           th:value="${user.firstName}">
+                </div>
+                <div class="profile__form_field">
+                    <div class="profile__form_field_head-error">
+                        <p>Surname </p>
+                        <p class="error"
+                           th:errors="*{lastName}"></p>
+                    </div>
+                    <input type="text" class="profile__input" placeholder="Surname" name="lastName" th:label="lastName"
+                           th:value="${user .lastName}">
+                </div>
+                <div class="profile__form_field">
+                    <div class="profile__form_field_head-error">
+                        <p>Password </p>
+                        <p class="error" th:if="${#fields.hasAnyErrors()}"
+                           th:errors="*{password}" th:errorclass="error"></p>
+                    </div>
+                    <input type="password" class="profile__input" placeholder="Password" name="password"
+                           th:label="password" value="123">
+                </div>
+                <div class="profile__form_field">
+                    <div class="profile__form_field_head-error">
+                        <p>Confirm password</p>
+                        <p class="error" th:if="${#fields.hasAnyErrors()}"
+                           th:errors="*{confirmPassword}"
+                           th:errorclass="error">></p>
+                    </div>
+                    <input type="password" class="profile__input" placeholder="Confirm Password" name="confirmPassword"
+                           value="123">
+                </div>
+
+                <!--<input type="text" name="firstName" class="profile__input" placeholder="Name" th:label="firstName" th:value="${user.firstName}">
+                <input type="text" name="lastName" class="profile__input" placeholder="Surname" th:label="lastName" th:value="${user .lastName}">
+
+                <input name="password" type="password"  class="profile__input" placeholder="Password" th:label="password" value="123">
+                <input name="confirmPassword" type="password" class="profile__input" placeholder="Confirm Password" value="123">-->
+                <button type="submit">Update User</button>
+            </form>
+        </div>
+    </div>
+</section>
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+<script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+</body>
+
+</html>
