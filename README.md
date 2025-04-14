@@ -1,7 +1,7 @@
 # PayMyBuddy
 
 ##  Database design schema
-![paymybuddyDatabase]([https://github.com/igorok-vin/paymybuddy/assets/51808003/89e8a662-2ebe-4f46-a503-f2c03dfff8c0](https://github.com/igorok-vin/paymybuddy/blob/master/uml_diagram/paymybuddyDatabase.png))
+![paymybuddyDatabase](https://github.com/igorok-vin/paymybuddy/blob/master/uml_diagram/paymybuddyDatabase.png)
 
 
 ##  Class diagram
